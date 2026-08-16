@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+</head>
+<body>
+
+    <h2>Student Result System</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name"><br><br>
+
+    <label>Physics:</label>
+    <input type="number" id="phy"><br><br>
+
+    <label>Chemistry:</label>
+    <input type="number" id="chem"><br><br>
+
+    <label>Maths:</label>
+    <input type="number" id="math"><br><br>
+
+    <label>Biology:</label>
+    <input type="number" id="bio"><br><br>
+
+    <button onclick="addStudent()">Submit</button>
+
+    <h2>Student Results</h2>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Physics</th>
+                <th>Chemistry</th>
+                <th>Maths</th>
+                <th>Biology</th>
+                <th>Total</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultTable">
+
+        </tbody>
+    </table>
+
+    <h2 id="topper">Topper : None</h2>
+
+    <!-- Link JavaScript File -->
+    <script src="student.js"></script>
+
+</body>
+</html>
