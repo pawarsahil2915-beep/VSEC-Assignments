@@ -1,0 +1,301 @@
+1. Create or Use Database
+
+use("harshal");
+
+Output:
+
+switched to db harshal
+
+2. Insert One Document
+
+db.students.insertOne({
+    name: "Harshal",
+    age: 21,
+    city: "Nashik",
+    course: "IT",
+    marks: 85
+});
+
+Output:
+
+{
+    acknowledged: true,
+    insertedId: ObjectId('6a82cb4c08ba599101474523')
+}
+
+3. Insert Many Documents
+
+db.students.insertMany([
+    {
+        name: "Aarav",
+        age: 20,
+        city: "Pune",
+        course: "CS",
+        marks: 78
+    },
+    {
+        name: "Sneha",
+        age: 22,
+        city: "Mumbai",
+        course: "IT",
+        marks: 92
+    },
+    {
+        name: "Rohan",
+        age: 19,
+        city: "Nashik",
+        course: "ENTC",
+        marks: 68
+    },
+    {
+        name: "Priya",
+        age: 21,
+        city: "Mumbai",
+        course: "CS",
+        marks: 88
+    }
+]);
+
+Output:
+
+{
+    acknowledged: true,
+    insertedIds: {
+        '0': ObjectId('6a82cbd64ca5e8788a49429e'),
+        '1': ObjectId('6a82cbd64ca5e8788a49429f'),
+        '2': ObjectId('6a82cbd64ca5e8788a4942a0'),
+        '3': ObjectId('6a82cbd64ca5e8788a4942a1')
+    }
+}
+
+4. Display All Documents
+
+db.students.find({});
+
+Output:
+
+{
+    _id: ObjectId('6a82cb4c08ba599101474523'),
+    name: 'Harshal',
+    age: 21,
+    city: 'Nashik',
+    course: 'IT',
+    marks: 85
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a49429e'),
+    name: 'Aarav',
+    age: 20,
+    city: 'Pune',
+    course: 'CS',
+    marks: 78
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a49429f'),
+    name: 'Sneha',
+    age: 22,
+    city: 'Mumbai',
+    course: 'IT',
+    marks: 92
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a4942a0'),
+    name: 'Rohan',
+    age: 19,
+    city: 'Nashik',
+    course: 'ENTC',
+    marks: 68
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a4942a1'),
+    name: 'Priya',
+    age: 21,
+    city: 'Mumbai',
+    course: 'CS',
+    marks: 88
+}
+
+5. Find Documents Using a Condition
+
+db.students.find({
+    age: { $gt: 20 }
+});
+
+Output:
+
+{
+    _id: ObjectId('6a82cb4c08ba599101474523'),
+    name: 'Harshal',
+    age: 21,
+    city: 'Nashik',
+    course: 'IT',
+    marks: 85
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a49429f'),
+    name: 'Sneha',
+    age: 22,
+    city: 'Mumbai',
+    course: 'IT',
+    marks: 92
+}
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a4942a1'),
+    name: 'Priya',
+    age: 21,
+    city: 'Mumbai',
+    course: 'CS',
+    marks: 88
+}
+
+6. Update One Document
+
+db.students.updateOne(
+    { name: "Harshal" },
+    { $set: { marks: 90 } }
+);
+
+Output:
+
+{
+    acknowledged: true,
+    matchedCount: 1,
+    modifiedCount: 1,
+    upsertedCount: 0
+}
+
+7. Update Multiple Documents
+
+db.students.updateMany(
+    { course: "CS" },
+    { $set: { course: "Computer Science" } }
+);
+
+Output:
+
+{
+    acknowledged: true,
+    matchedCount: 2,
+    modifiedCount: 2,
+    upsertedCount: 0
+}
+
+8. Delete One Document
+
+db.students.deleteOne({
+    name: "Rohan"
+});
+
+Output:
+
+{
+    acknowledged: true,
+    deletedCount: 1
+}
+
+9. Delete Multiple Documents
+
+db.students.deleteMany({
+    city: "Mumbai"
+});
+
+Output:
+
+{
+    acknowledged: true,
+    deletedCount: 2
+}
+
+10. Sort Documents
+
+db.students.find({}).sort({ age: 1 });
+
+Output:
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a49429e'),
+    name: 'Aarav',
+    age: 20,
+    city: 'Pune',
+    course: 'CS',
+    marks: 78
+}
+
+{
+    _id: ObjectId('6a82cb4c08ba599101474523'),
+    name: 'Harshal',
+    age: 21,
+    city: 'Nashik',
+    course: 'IT',
+    marks: 90
+}
+
+11. Display Selected Fields
+
+db.students.find(
+    {},
+    { _id: 0, name: 1, marks: 1 }
+);
+
+Output:
+
+{
+    name: 'Harshal',
+    marks: 90
+}
+
+12. Count Documents
+
+db.students.countDocuments({});
+
+Output:
+
+2
+
+13. Limit Documents
+
+db.students.find({}).limit(1);
+
+Output:
+
+{
+    _id: ObjectId('6a82cbd64ca5e8788a49429e'),
+    name: 'Aarav',
+    age: 20,
+    city: 'Pune',
+    course: 'CS',
+    marks: 78
+}
+
+14. Drop Collection
+
+The drop() method deletes an entire collection from the database.
+
+Command:
+
+db.students.drop();
+
+Output:
+
+true
+
+15. Drop Database
+
+The dropDatabase() method deletes the currently selected database.
+
+Command:
+
+db.dropDatabase();
+
+Output:
+
+{
+    ok: 1,
+    dropped: 'harshal'
+}

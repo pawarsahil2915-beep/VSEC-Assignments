@@ -1,0 +1,43 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1edff;
+}
+
+.app {
+  text-align: center;
+  padding: 25px;
+}
+
+h1 {
+  color: #6c45c5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 75px);
+  gap: 10px;
+  justify-content: center;
+  margin: 25px auto;
+}
+
+.card {
+  height: 75px;
+  font-size: 30px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 3px 6px #ccc;
+}
+
+.restart {
+  padding: 12px 22px;
+  background: #6c45c5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
